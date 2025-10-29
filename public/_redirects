@@ -1,0 +1,5 @@
+# Netlify redirects configuration for SPA (Single Page Application)
+# This tells Netlify to serve index.html for all routes that don't match actual files
+# This enables client-side routing to work properly in production
+
+/*    /index.html   200

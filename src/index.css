@@ -1,42 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 0%,
+    hsl(var(--muted-foreground) / 0.1) 20%,
+    hsl(var(--muted-foreground) / 0.2) 60%,
+    hsl(var(--muted))
+  );
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Professional LMS Design System with Windows Blue Signature */
 
 @layer base {
   :root {
+    /* Core Colors - Windows Blue Inspired */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 240 10% 3.9%;
+    
+    /* Windows Signature Blue */
+    --primary: 210 100% 42%;
+    --primary-foreground: 0 0% 98%;
+    --primary-soft: 210 100% 95%;
+    --primary-muted: 210 40% 88%;
+    
+    /* Supporting Colors */
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    
+    --accent: 210 40% 96%;
+    --accent-foreground: 210 100% 42%;
+    
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    
+    /* UI Elements */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    --card-foreground: 240 10% 3.9%;
+    
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 210 100% 42%;
+    
+    /* Semantic Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 355.7 100% 97.3%;
+    
+    --warning: 48 96% 53%;
+    --warning-foreground: 48 96% 7%;
+    
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 42%) 0%, hsl(220 100% 50%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(220 14.3% 95.9%) 0%, hsl(220 20% 88%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 42%) 0%, hsl(220 100% 50%) 25%, hsl(230 100% 58%) 100%);
+    
+    /* Spacing & Layout */
+    --radius: 0.75rem;
+    --header-height: 4rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +95,36 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Dark Theme - Professional Blue */
+    --background: 223 84% 5%;
+    --foreground: 0 0% 95%;
+    
+    /* Dark Blue Accent */
+    --primary: 210 100% 58%;
+    --primary-foreground: 240 10% 8%;
+    --primary-soft: 210 100% 15%;
+    --primary-muted: 210 50% 25%;
+    
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 95%;
+    
+    --accent: 240 5% 15%;
+    --accent-foreground: 210 100% 58%;
+    
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    --card: 240 10% 12%;
+    --card-foreground: 0 0% 95%;
+    
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 210 100% 58%;
+    
+    /* Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 58%) 0%, hsl(220 100% 65%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(240 3.7% 15.9%) 0%, hsl(240 5% 20%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 58%) 0%, hsl(220 100% 65%) 25%, hsl(230 100% 72%) 100%);
   }
 }
 
@@ -100,6 +134,177 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  /* Glass Effect */
+  .glass {
+    @apply backdrop-blur-xl bg-white/10 border border-white/20;
+  }
+  
+  /* Gradient Backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  /* Feature Cards */
+  .feature-card {
+    @apply bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+  }
+  
+  /* Stats Cards */
+  .stats-card {
+    @apply bg-primary/5 border border-primary/20 rounded-lg p-8 text-center;
+  }
+  
+  /* Section Padding */
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  /* Container Max Width */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out;
+  }
+  
+  .animate-scale {
+    animation: scale-in 0.5s ease-out;
+  }
+}
+
+/* Modern Professional Scrollbar */
+.modern-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.2) transparent;
+}
+
+.modern-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.2);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: all 0.2s ease;
+}
+
+.modern-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.4);
+  border-width: 1px;
+}
+
+.modern-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Hide scrollbar on tablet and mobile devices */
+@media (max-width: 1024px) {
+  body, html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+
+  body::-webkit-scrollbar,
+  html::-webkit-scrollbar {
+    display: none; /* WebKit */
+  }
+
+  /* Override for specific containers that need scrollbars */
+  .force-scrollbar {
+    scrollbar-width: thin;
+  }
+
+  .force-scrollbar::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Floating Blob Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
+}
+
+/* 3D Card Flip Effects */
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
 }

@@ -15,9 +15,9 @@ import { FloatingTimer } from "./components/ui/FloatingTimer";
 import { FloatingSoundPlayer } from "./components/ui/FloatingSoundPlayer";
 import { useTimerContext } from "./contexts/TimerContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import Home from "./pages/Home";
 
 // Lazy-loaded page components
-const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Courses = lazy(() => import("./pages/Courses"));
 const CourseView = lazy(() => import("./pages/CourseView"));
